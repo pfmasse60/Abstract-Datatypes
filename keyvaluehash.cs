@@ -17,6 +17,7 @@ public class Program
 				new KeyValuePair<int, int>(8, 0),
             };
             
+        listCount(list);
 	}
 
     public void listCount(List list)
