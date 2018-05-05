@@ -18,4 +18,10 @@ public class Program
             };
             
 	}
+
+    public void listCount(List list)
+    {
+        
+
+    }
 }
