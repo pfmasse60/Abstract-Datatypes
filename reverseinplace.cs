@@ -62,6 +62,6 @@ public class LinkedList
 		
 	}
 	
-	public Node getHead() { return head.next; }
+	public Node getHead() { Node newNode = new Node(); newNode = head; return newNode; }
 
 }
