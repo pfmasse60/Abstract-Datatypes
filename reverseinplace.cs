@@ -1,5 +1,5 @@
 using System;
-using System.Collections.Generic;
+using System.Collections;
 					
 public class Program
 {
@@ -11,12 +11,36 @@ public class Program
 		myList.addNode(3);
 		myList.addNode(5);
 		
-		myList.printNodeList(myList.getHead());
-		//myList.printNode(myList.getHead());
+		myList.printNode();
+		//myList.printNodeReverse(myList.getHead());
 		
-		//Stack<Node> s = new Stack<Node>();
-		//s.Push(myList.getHead());
-		//Console.WriteLine(s.Count);
+		Stack s = new Stack();
+		
+		myList.current = myList.head;
+		while (myList.current != null) {
+			s.Push(myList.current);
+			myList.current = myList.current.next;
+			
+		}
+	
+		//Node temp = (Node)s.Pop();
+		Node temp;
+		//myList.head = temp;
+		//myList.current = temp;
+		
+		while (s.Count > 0) {
+			
+			temp = (Node)s.Pop();
+			//Console.WriteLine(temp.data);
+			temp.next = myList.current;
+			myList.current = temp;
+			
+	
+			
+		}
+		
+	myList.printNode();
+	
 	}
 }
 
@@ -49,12 +73,11 @@ public class LinkedList
 		newNode.next = null;		
 	}
 	
-	public void printNodeList(Node n) {
-		//current = head.next;
-		while(n != null){
-			Console.WriteLine(n.data);
-			//current = current.next;
-			n = n.next;
+	public void printNode() {
+		current = head.next;
+		while(current != null){
+			Console.WriteLine(current.data);
+			current = current.next;
 		}
 		
 	}
@@ -69,7 +92,5 @@ public class LinkedList
 	}
 	
 	public Node getHead() { Node newNode = new Node(); newNode = head; return newNode; }
-	
-	public void printNode(Node n) { Console.WriteLine(n.data); }
 
 }
