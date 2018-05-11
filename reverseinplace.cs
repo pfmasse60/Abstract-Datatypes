@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 					
 public class Program
 {
@@ -10,8 +11,12 @@ public class Program
 		myList.addNode(3);
 		myList.addNode(5);
 		
-		myList.printNode();
-		myList.printNodeReverse(myList.getHead());
+		myList.printNodeList(myList.getHead());
+		//myList.printNode(myList.getHead());
+		
+		//Stack<Node> s = new Stack<Node>();
+		//s.Push(myList.getHead());
+		//Console.WriteLine(s.Count);
 	}
 }
 
@@ -44,11 +49,12 @@ public class LinkedList
 		newNode.next = null;		
 	}
 	
-	public void printNode() {
-		current = head.next;
-		while(current != null){
-			Console.WriteLine(current.data);
-			current = current.next;
+	public void printNodeList(Node n) {
+		//current = head.next;
+		while(n != null){
+			Console.WriteLine(n.data);
+			//current = current.next;
+			n = n.next;
 		}
 		
 	}
@@ -63,5 +69,7 @@ public class LinkedList
 	}
 	
 	public Node getHead() { Node newNode = new Node(); newNode = head; return newNode; }
+	
+	public void printNode(Node n) { Console.WriteLine(n.data); }
 
 }
