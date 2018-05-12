@@ -11,37 +11,14 @@ public class Program
 		myList.addNode(3);
 		myList.addNode(5);
 		
+	
 		myList.printNode();
-		//myList.printNodeReverse(myList.getHead());
-		
-		Stack s = new Stack();
-		
-		myList.current = myList.head;
-		while (myList.current != null) {
-			s.Push(myList.current);
-			myList.current = myList.current.next;
-			
-		}
-	
-		//Node temp = (Node)s.Pop();
-		Node temp;
-		//myList.head = temp;
-		//myList.current = temp;
-		
-		while (s.Count > 0) {
-			
-			temp = (Node)s.Pop();
-			//Console.WriteLine(temp.data);
-			temp.next = myList.current;
-			myList.current = temp;
-			
-	
-			
-		}
-		
-	myList.printNode();
-	
+		myList.Reverse();
+		myList.printNode();
 	}
+		
+	
+	
 }
 
 
@@ -74,7 +51,7 @@ public class LinkedList
 	}
 	
 	public void printNode() {
-		current = head.next;
+		current = head;
 		while(current != null){
 			Console.WriteLine(current.data);
 			current = current.next;
@@ -82,13 +59,31 @@ public class LinkedList
 		
 	}
 	
-	public void printNodeReverse(Node n) {
-		if (n == null)
-			Console.WriteLine(n.data);
+	public void Reverse() {
 		
-		printNodeReverse(n.next);
-		Console.WriteLine(n.data);
+		Stack s = new Stack();
+		Node temp;
 		
+		current = head;
+		while (current != null) {
+			//Console.WriteLine("Going into pop " + current.data);
+			s.Push(current);
+			//Console.WriteLine("The stack contains " + s.Count);
+			current = current.next;			
+		}
+		
+		head = (Node)s.Pop();
+		//Console.WriteLine("head is " + head.data);
+		head.next = null;
+		current = head;
+		
+		while (s.Count > 0) {
+			temp = (Node)s.Pop();
+			//Console.WriteLine("temp is " + temp.data);
+			current.next = temp;
+			temp.next = null;
+			current = temp;
+		}
 	}
 	
 	public Node getHead() { Node newNode = new Node(); newNode = head; return newNode; }
